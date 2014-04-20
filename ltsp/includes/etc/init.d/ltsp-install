@@ -1,0 +1,468 @@
+#! /bin/sh
+
+
+#BOOT_IMAGES_URL="http://172.16.42.110/boot-images"
+LTSP_IMAGES_URL="http://172.16.42.10/ltsp-images"
+
+if test -f /etc/default/ltsp-install; then
+  . /etc/default/ltsp-install
+fi
+
+MNT="/mnt"
+IMAGES="ltsp-images"
+
+do_install()
+{
+
+
+echo
+echo "=================Attention===================="
+echo 
+echo "This Programm destroys your Disk. Typ \"I know this\" to continue!"
+echo
+read ANS
+
+if ! test "$ANS" = "I know this";then exit 1;fi
+
+
+  if test -d /mnt/boot; then
+    echo 
+    echo "It look like the system is already installed!"
+    echo -n "Do you want to overwrite your installation (Yes/No) "
+    read ANS
+    if test "$ANS" != "Yes"; then exit 1;fi
+  fi
+
+
+# install bootserver
+
+
+echo
+echo "Found the following disks:"
+cat /proc/partitions
+echo
+
+RET=true
+while $RET; do 
+
+  echo -n "Your choice (or quit)? "
+  read DISK
+
+  if test "$DISK" = "quit"; then exit 1;fi
+
+  if test -z "$DISK"; then DISK="no disk"; fi
+ 
+  if cat /proc/partitions|grep -q "${DISK}$"; then
+
+    echo
+    echo "!!!!! Your are about to erease  $DISK   !!!!!"
+    echo 
+    echo -n "Do you want to continue? (Yes/No) "
+    read ANS
+
+    case $ANS in
+      Yes)
+       #echo "Yes"
+       RET=false
+       ;;
+      No)
+       #echo "No"
+       exit
+       ;;
+      *)
+       echo "Answer Yes or No!"
+       ;;
+    esac
+  else
+   RET=true
+  fi
+done
+
+
+umount /dev/${DISK}1
+umount /dev/${DISK}2
+
+
+
+parted --align optimal --script /dev/${DISK} -- mklabel msdos
+
+parted --align optimal --script /dev/${DISK} -- mkpart primary 2048s 8G
+parted --align optimal --script /dev/${DISK} -- set 1 boot on
+parted --align optimal --script /dev/${DISK} -- mkpart primary 8G 95%
+
+umount /dev/${DISK}1
+umount /dev/${DISK}2
+
+mkfs.ext4 -L ${IMAGES} /dev/${DISK}1
+mkfs.ext4 -L ltsp-local /dev/${DISK}2
+
+
+if ! test -d ${MNT}/part1;then mkdir ${MNT}/part1;fi
+if mount /dev/${DISK}1 ${MNT}/part1; then
+    # install grub
+    grub-install --force --root-directory=${MNT}/part1 /dev/${DISK}
+    if cd ${MNT}/part1/boot/grub/; then
+
+
+
+cat<<'EOF' > ${MNT}/part1/boot/grub/grub.cfg
+set default="0"
+
+function load_video {
+  if [ x$feature_all_video_module = xy ]; then
+    insmod all_video
+  else
+    insmod efi_gop
+    insmod efi_uga
+    insmod ieee1275_fb
+    insmod vbe
+    insmod vga
+    insmod video_bochs
+    insmod video_cirrus
+  fi
+}
+
+if loadfont unicode ; then
+  set gfxmode=auto
+  load_video
+  insmod gfxterm
+  set locale_dir=$prefix/locale
+  set lang=de_CH
+  insmod gettext
+fi
+terminal_output gfxterm
+set timeout=5
+### END /usr/local/etc/grub.d/00_header ###
+
+function primaryimage { regexp -s "$2" 'cur-image-(.*)$' "$1"; }
+function primaryiso { regexp -s "$2" 'cur-iso-(.*)$' "$1"; }
+function pathname { regexp -s 2:"$2" '^(\(.*\))?(/.*)$' "$1"; }
+function devname  { regexp -s "$2" '^(\(.*\)).*$' "$1"; }
+
+function ltsp_iso_entry {
+  set file="$1"
+
+
+  pathname $file imagepath
+  devname $file dev
+
+  echo $imagepath
+  echo $dev
+
+  menuentry "LTSP-Boot - ${dev}${imagepath}" "$dev" "$imagepath"{
+    set dev="$2"
+    set imagepath="$3"
+
+#    if test -f "${dev}${pfad}/ltsp-kernel-settings"; then
+#      load_env -f "${dev}${pfad}/ltsp-kernel-settings"
+#    fi
+
+    loopback loop "${dev}${imagepath}"
+    set root='(loop)'
+
+    linux   /live/vmlinuz boot=live noeject persistence ro verbose root=${root} loop="${imagepath}"
+    initrd  /live/initrd.img
+
+    loopback -d loop
+  }
+}
+
+
+# ltsp image
+function ltsp_image_entry {
+  set file="$1"
+
+  pathname $file imagepath
+  devname $file dev
+
+  echo $imagepath
+  echo $dev
+
+
+
+  menuentry "LTSP - ${dev}${imagepath}" "$dev" "$imagepath"{
+    set dev="$2"
+    set imagepath="$3"
+
+#    if test -f "${dev}${pfad}/ltsp-kernel-settings"; then
+#      load_env -f "${dev}${pfad}/ltsp-kernel-settings"
+#    fi
+
+    loopback loop "${dev}${imagepath}"
+    set root='(loop)'
+
+    linux   /boot/vmlinuz ro verbose init=/sbin/init-ltsp root=/dev/sda1 loop="${imagepath}" 
+    initrd  /boot/initrd.img
+
+    loopback -d loop
+  }
+}
+
+
+insmod gzio
+insmod part_msdos
+insmod ext2
+insmod squash4
+insmod biosdisk
+insmod regexp
+insmod loopback
+insmod usb_keyboard
+
+
+#images
+set pfad="ltsp-images"
+for dev in (hd0,msdos1); do
+  echo "${dev}"
+
+  for file in ${dev}/${pfad}/cur-image-*; do
+    primaryimage $file primaryimage
+  done
+
+  echo "PRIMARY: ${primaryimage}"
+
+  if test -f "${dev}/${pfad}/${primaryimage}.img"; then
+    ltsp_image_entry "${dev}/${pfad}/${primaryimage}.img"
+  fi
+
+  for file in ${dev}/${pfad}/*.img; do
+    if test "${file}" = "${dev}/${pfad}/${primaryimage}.img"; then continue; fi
+    if ! test -f "$file"; then continue; fi
+
+    echo "${file}"
+    ltsp_image_entry "${file}"
+  done
+done
+
+#iso
+set pfad="boot-images"
+for dev in (hd0,msdos1); do
+  echo "${dev}"
+
+#  for file in ${dev}/${pfad}/cur-iso-*; do
+#    primaryiso $file primaryimage
+#  done
+
+#  echo "PRIMARY: ${primaryimage}"
+
+#  if test -f "${dev}/${pfad}/${primaryimage}.iso"; then
+#    ltsp_iso_entry "${dev}/${pfad}/${primaryimage}.iso"
+#  fi
+
+  for file in ${dev}/${pfad}/*.iso; do
+#    if test "${file}" = "${dev}${pfad}/${primaryimage}.iso"; then continue; fi
+    if ! test -f "$file"; then continue; fi
+
+    echo "${file}"
+    ltsp_iso_entry "${file}"
+  done
+done
+
+EOF
+
+
+
+
+
+      #cp /var/lib/andrijn/grug.cfg .
+      #wget ${BOOT_IMAGES_URL}/grub.cfg
+
+    else
+      echo "could not cd /mnt/part1/boot/grub"
+    fi
+
+    # install initial boot-image
+    mkdir ${MNT}/part1/${IMAGES}/
+    if cd ${MNT}/part1/${IMAGES}/; then
+       if test -d /lib/live/mount/medium/ltsp-images; then
+         cp /var/lib/mount/medium/ltsp-images/* .
+       else
+         do_sync ${LTSP_IMAGES_URL} ${MNT}/part1/${IMAGES} img
+       fi
+    else
+       echo "could not cd /mnt/part1/boot-images"
+    fi
+else
+  echo "could not mount /dev/${DISK}1"
+fi
+
+
+if ! test -d ${MNT}/part2;then mkdir ${MNT}/part2;fi
+if mount /dev/${DISK}2 ${MNT}/part2; then
+    echo "/etc/cups/" > ${MNT}/part2/persistence.conf
+fi
+
+
+
+sleep 5
+umount ${MNT}/part1
+umount ${MNT}/part2
+
+
+sleep 5
+umount ${MNT}/part1
+umount ${MNT}/part2
+
+
+ 
+}
+
+
+do_sync()
+{
+
+  URL=$1
+
+  cd $2
+
+  TYPE=$3
+
+  if test -f version; then
+    VERSION=$(cat version)
+  else
+    VERSION=0
+    touch version
+    echo "0" > version
+  fi
+
+  VERSION_neu="$(wget -O - ${URL}/version 2>/dev/null)"
+
+  if test -n "$VERSION_neu"; then 
+ 
+    if test "$VERSION"  = "$VERSION_neu"; then
+      echo "nothing to do"
+    else
+      echo "copy $(printf "%06i.*" $VERSION) to $(printf "%06i.*" $VERSION_neu)..."
+      if test -f $(printf "%06i" $VERSION).$TYPE; then
+        cp $(printf "%06i" $VERSION).$TYPE $(printf "%06i" $VERSION_neu).$TYPE
+      else
+        touch  $(printf "%06i" $VERSION_neu).$TYPE
+      fi
+
+      echo "zsync..." 
+      if zsync "${URL}/$(printf "%06i" $VERSION_neu).${TYPE}.zsync"; then
+       
+        if test "$TYPE" = "iso"; then
+          wget -O ${MNT}/${IMAGES}/boot/grub/grub.cfg ${URL}/grub.cfg
+        fi
+
+
+        # sync meta info
+        rm version
+        wget ${URL}/version
+
+        rm *-$TYPE-*
+        touch old-$TYPE-$(printf "%06i" $VERSION)
+        touch cur-$TYPE-$(printf "%06i" $VERSION_neu)
+        touch nxt-$TYPE-$(printf "%06i" $VERSION_neu)
+
+
+        #remove old images
+        echo "remove oldies"
+        if test -f $(printf "%06i" $(( $VERSION -3 ))).$TYPE; then
+          rm $(printf "%06i.*" $(( $VERSION -3 )))
+        fi
+        if test -f *.zs-old; then 
+          rm *.zs-old 
+        fi
+
+        echo "$VERSION_neu" > version
+
+        echo "ok"
+      fi #zsync
+    fi # version neu
+  fi 
+}
+
+do_daemon()
+{
+  sleep 300
+  while true; do
+     do_sync ${LTSP_IMAGES_URL} ${MNT}/${IMAGES}/${IMAGES} img
+     sleep 600
+  done
+}
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+  if ! test -d ${MNT}/${IMAGES}; then mkdir ${MNT}/${IMAGES};fi
+  
+  if mount -L ${IMAGES} ${MNT}/${IMAGES} 2>/dev/null >/dev/null; then
+    echo "Use: \"sudo service ltsp-install [restore|backup|sync]\" to manage LTSP-Workstation"
+    if cat /proc/cmdline|grep -q init-ltsp; then
+      if ! test -f /var/run/sync-daemon.pid; then
+        $0 daemon &
+        echo $! > /var/run/sync-daemon.pid
+      fi
+    fi
+  else
+    echo "Use: \"sudo service ltsp-install install\" to install LTSP-Workstation"
+  fi 
+} 
+
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+  if test -f /var/run/sync-daemon.pid; then
+    kill $(cat /var/run/sync-daemon.pid)
+    rm /var/run/sync-daemon.pid
+  fi
+  umount ${MNT}/${IMAGES}
+}
+
+
+
+
+  case "$1" in
+    install)
+        do_install
+        do_start
+        ;;
+    sync)
+        if ! test -f /var/run/sync-daemon.pid; then
+          echo "do_sync ${LTSP_IMAGES_URL} ${MNT}/${IMAGES}/${IMAGES} img"
+          if test -d ${MNT}/${IMAGES}/${IMAGES}; then 
+             do_sync ${LTSP_IMAGES_URL} ${MNT}/${IMAGES}/${IMAGES} img
+             echo "done"
+          else
+            echo "ltsp-images is not mounted"
+          fi
+        else
+          echo "sync-daemon is running. doing nothing"
+        fi
+        ;;
+    backup)
+        echo "not implemented yet" 
+	;;
+    restore)
+        echo "not implemented yet"
+        ;;
+    start)
+        if ! test -d ${NMT}/${IMAGES}/${IMAGES}; then
+          echo "starting"
+          do_start
+        else
+          echo "already started"
+        fi
+        ;;
+    stop)
+        if test -d ${NMT}/${IMAGES}/${IMAGES}; then
+          echo "stopping"
+          do_stop
+        else
+          echo "already stopped"
+        fi
+        ;;
+    *)
+	echo "Usage: $SCRIPTNAME {backup|restore|install|sync|start|stop}" >&2
+	exit 3
+	;;
+  esac
+
+  exit 
+
