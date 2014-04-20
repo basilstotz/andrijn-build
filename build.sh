@@ -13,6 +13,6 @@ ltsp-build-client \
     --fat-client-desktop ubuntu-desktop \
     --andrijn-updater "http://172.16.42.10/ltsp-images" \
     --ldm-themes-extra \
-    --late-packages "language-pack-de language-pack-gnome-de \ 
-                     language-pack-kde-de hyphen-de libreoffice-I10n-de \
+    --late-packages "language-pack-de language-pack-gnome-de  
+                     language-pack-kde-de hyphen-de libreoffice-I10n-de 
                      myspell-de-ch mythes-de-ch emacs nmap xosview"
