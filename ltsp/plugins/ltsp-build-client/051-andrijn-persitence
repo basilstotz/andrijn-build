@@ -1,17 +1,16 @@
 case "$MODE" in
     commandline)
-        add_option "andrijn-updater" "`eval_gettext "andrijn-updater http://..."`" "advanced" "true"
+        add_option "andrijn-persistence" "`eval_gettext "make some changes persistent"`" "advanced" "false"
         ;;
     configure)
-        if [ -n "$option_late_packages_value" ]; then
-            ANDRIJN_IMAGES_URL="$(echo $option_andrijn_updater_value)"
-        fi
+        ANDRIJN_PERSISTENCE=true
         ;;
     finalization)
-        echo -n "installing ltsp-install..."
-        cp /etc/ltsp/includes/etc/init.d/ltsp-install $ROOT/etc/init.d/.
-        echo "LTSP_IMAGES_URL=$ANDRIJN_IMAGES_URL" >> $ROOT/etc/default/ltsp-install
-        chroot $ROOT update-rc.d ltsp-install defaults
-        echo "ok"
+        if $ANDRIJN_PERSISTENCE; then
+          echo "installing ltsp-persitence..."
+          #cp /etc/ltsp/includes/etc/init.d/ltsp-persistence $ROOT/etc/init.d/.
+          #chroot $ROOT update-rc.d ltsp-persistence defaults
+          echo "ok"
+        fi
         ;;
 esac

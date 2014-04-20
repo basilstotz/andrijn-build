@@ -1,0 +1,30 @@
+case "$MODE" in
+    commandline)
+        add_option "andrijn-localusers" "`eval_gettext "default local adminuser "`" "advanced" "false"
+        add_option "andrijn-admin-name" "`eval_gettext "name of local admin user"`" "advanced" "true"
+        add_option "andrijn-admin-passwd" "`eval_gettext "password of local admin user"`" "advanced" "true"
+        ;;
+    configure)
+        if [ -n "$option_admin_name_value" ]; then
+            ANDRIJN_ADMIN_NAME=$option_admin_user_name_value
+        fi
+        if [ -n "$option_admin_passwd_value" ]; then
+            ANDRIJN_ADMIN_PASSWD=$option_admin_user_name_value
+        fi
+        if [ -n "$option_adminuser_value" ]; then
+            ANDRIJN_ADMINUSER=true
+        fi
+        ;;
+    finalization)
+        if [ -n $ANDRIJN_LOCALUSERS ] || [ -n $ANDRIN_ADMIN_NAME ] || [ $ANDRIJN_ADM_PASSWD ]; then
+            if [ -z $ANDRIN_ADMINUSER_NAME ]; then 
+               ANDRIJN_ADMINUSER_NAME="system"; 
+            fi
+            if [ -z $ANDRIN_ADMINUSER_PASSWD ]; then 
+               ANDRIJN_ADMINUSER_PASSWD="password"
+            fi
+            echo  "installing localadminuser..."
+            echo "dummy ok"
+        fi
+        ;;
+esac
