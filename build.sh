@@ -20,4 +20,4 @@ ltsp-build-client \
     --language-support-german \
     --ldap-auth \
     --multiuser-wine \
-    --late-packages "e3 nmap xosview" | tee build.log
+    --package-lists "debug.list" | tee build.log
