@@ -6,7 +6,12 @@
 #
 do_start()
 {
- echo "starting ltsp-ldap (dummy)"
+   echo "starting ltsp-ldap (dummy)"
+
+   # todo: tweak configs here
+
+   service libnss-ldap start
+   service nslcd start
 } 
 
 
@@ -15,7 +20,9 @@ do_start()
 #
 do_stop()
 {
-echo "stopping ltsp-ldap (dummy)"
+   echo "stopping ltsp-ldap (dummy)"
+   service libnss-ldap stop
+   service nslcd stop
 }
 
 
