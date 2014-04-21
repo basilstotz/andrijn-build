@@ -1,6 +1,6 @@
 case "$MODE" in
     commandline)
-        add_option "andrijn-update" "`eval_gettext "--andrijn-update http://..."`" "advanced" "true"
+        add_option "andrijn-update" "`eval_gettext "andrijn-update http://..."`" "advanced" "true"
         ;;
     configure)
         if [ -n "$option_andrijn_update_value" ]; then
