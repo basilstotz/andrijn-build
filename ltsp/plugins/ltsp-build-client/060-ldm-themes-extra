@@ -13,7 +13,7 @@ case "$MODE" in
             cp -r /etc/ltsp/includes/$WO/* $ROOT/$WO
             if test -h $ROOT/$WO/default; then
               rm $ROOT/$WO/default
-            if
+            fi
             ln -s $ROOT/$WO/amxa $ROOT/$WO/default
             echo "ok"
           fi
