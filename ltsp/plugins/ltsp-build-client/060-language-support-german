@@ -1,0 +1,18 @@
+case "$MODE" in
+    commandline)
+        add_option "language-support-german" "`eval_gettext "german language supprot"`" "advanced" "false"
+        ;;
+    configure)
+        if test -n $option_language_support_german_value; then
+          LANGUAGE_SUPPORT_GERMAN=true
+        fi
+        ;;
+    finalization)
+       L="language-pack-de language-pack-gnome-de language-pack-kde-de hyphen-de libreoffice-l10n-de myspell-de-ch mythes-de-ch"
+       if $LANGUAGE_SUPPORT_GERMAN; then
+         echo "installing language support german"
+         chroot $ROOT apt-get install --yes $L
+         echo "ok"
+       fi
+       ;;
+esac
