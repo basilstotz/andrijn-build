@@ -8,6 +8,7 @@ ltsp-build-client \
     --mirror http://localhost:3142/ch.archive.ubuntu.com/ubuntu/ \
     --updates-mirror http://ch.archive.ubuntu.com/ubuntu/ \
     --security-mirror http://localhost:3142/ch.archive.ubuntu.com/ubuntu/ \
+    --skip-upgrade
     --arch i386 \
     --skipimage \
     --install-debs-dir /etc/ltsp/debs \
