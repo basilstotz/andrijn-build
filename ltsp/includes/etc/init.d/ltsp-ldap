@@ -1,0 +1,38 @@
+#! /bin/sh
+
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+ echo "starting ltsp-ldap (dummy)"
+} 
+
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+echo "stopping ltsp-ldap (dummy)"
+}
+
+
+
+
+  case "$1" in
+    start)
+        do_start
+        ;;
+    stop)
+        do_stop
+        ;;
+    *)
+	echo "Usage: $SCRIPTNAME {start|stop}" >&2
+	exit 3
+	;;
+  esac
+
+  exit 
+

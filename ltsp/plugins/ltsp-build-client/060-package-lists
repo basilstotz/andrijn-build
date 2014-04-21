@@ -14,9 +14,7 @@ case "$MODE" in
         if test -n "$PACKAGE_LISTS"; then
           echo -n "installing ltsp-install..."
           for LIST in $PACKAGE_LISTS; do
-            for PACK in $(cat /etc/ltsp/package-lists/$LIST|xargs); do
-               chroot $ROOT apt-get install --yes $PACK
-            done
+            chroot $ROOT apt-get install --yes $(cat /etc/ltsp/package-lists/$LIST|xargs) 
           done
           echo "ok"
         fi

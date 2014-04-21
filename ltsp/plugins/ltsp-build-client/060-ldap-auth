@@ -12,12 +12,18 @@ case "$MODE" in
          echo "installing ldap-auth"
          chroot $ROOT apt-get install --yes ldap-utils libpam-ldap libnss-ldap nslcd
          chroot $ROOT update-rc.d -f nslcd remove 
+         chroot $ROOT update-rc.d -f libnss-ldap remove 
+
          if test -f $ROOT/etc/nsswitch.conf; then
             sed "s/compat/compat ldap/g" -i $ROOT/etc/nsswitch.conf
          else
             echo "file not found: /etc/nsswitch.conf"
          fi
-         echo "*;*;*;A10000-2400;plugdev,fuse,scanner,video,autio" >> $ROOT/etc/security/group.conf
+         echo "*;*;*;A0000-2400;plugdev,fuse,scanner,video,audio" >> $ROOT/etc/security/group.conf
+
+         cp /etc/ltsp/includes/etc/init.d/ltsp-ldap $ROOT/etc/init.d/ltsp-ldap
+         chroot $ROOT update-rc.d ltsp-ldap defaults
+
          echo "ok"
        fi
        ;;
