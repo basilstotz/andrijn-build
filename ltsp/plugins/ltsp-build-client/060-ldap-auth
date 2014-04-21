@@ -3,10 +3,13 @@ case "$MODE" in
         add_option "ldap-auth" "`eval_gettext "install ldap auth"`" "advanced" "false"
         ;;
     configure)
-        LDAP_AUTH=true
+        if test -n $option_ladap_auth_value; then
+          LDAP_AUTH=true
+        fi
         ;;
     finalization)
        if $LDAP_AUTH; then
+         echo "installing ldap-auth"
          chroot $ROOT apt-get install --yes ldap-utils libpam-ldap libnss-ldap nslcd 
          if test -f $ROOT/etc/nsswitch.conf; then
             sed "s/compat/compat ldap/g" -i $ROOT/etc/nsswitch.conf
@@ -14,6 +17,7 @@ case "$MODE" in
             echo "file not found: /etc/nsswitch.conf"
          fi
          echo "*;*;*;A10000-2400;plugdev,fuse,scanner,video,autio" >> $ROOT/etc/security/group.conf
+         echo "ok"
        fi
        ;;
 esac
