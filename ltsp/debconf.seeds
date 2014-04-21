@@ -25,7 +25,7 @@ nslcd	nslcd/ldap-sasl-authcid	string
 
 # Choices: Unix authentication, Winbind NT/Active Directory authentication, GNOME Keyring Daemon - Login keyring management, ConsoleKit Session Management, Inheritable Capabilities Management
 libpam-runtime	libpam-runtime/profiles	multiselect	unix, winbind, gnome-keyring, consolekit, capability
--
+
 # Choices: Unix authentication, Winbind NT/Active Directory authentication, LDAP Authentication, GNOME Keyring Daemon - Login keyring management, ConsoleKit Session Management, Inheritable Capabilities Management
 libpam-runtime	libpam-runtime/profiles	multiselect	unix, winbind, ldap, gnome-keyring, consolekit, capability
 
