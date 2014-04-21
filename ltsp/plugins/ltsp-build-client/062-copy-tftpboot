@@ -1,0 +1,16 @@
+case "$MODE" in
+    commandline)
+        ;;
+    configure)
+        ;;
+    finalization)
+        if test -d /var/lib/tftpboot/ltsp/; then
+            echo -n "copying tftpboot..."
+            if ! test -d $ROOT/var/lib/tftpboot/ltsp; then
+               mkdir -p $ROOT/var/lib/tftpboot/ltsp
+            fi
+            cp -r /var/lib/tftpboot/ltsp $ROOT/vat/lib/tftpboot/
+            echo "ok"
+        fi
+        ;;
+esac
