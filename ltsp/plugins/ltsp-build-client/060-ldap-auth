@@ -9,7 +9,7 @@ case "$MODE" in
        if $LDAP_AUTH; then
          chroot $ROOT apt-get install --yes ldap-utils libpam-ldap libnss-ldap nslcd 
          if test -f $ROOT/etc/nsswitch.conf; then
-            sed "s/compat/compat ldap/g" -i /$ROOT/etc/nsswitch.conf
+            sed "s/compat/compat ldap/g" -i $ROOT/etc/nsswitch.conf
          else
             echo "file not found: /etc/nsswitch.conf"
          fi
