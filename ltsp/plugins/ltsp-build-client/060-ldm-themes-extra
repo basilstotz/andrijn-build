@@ -11,6 +11,10 @@ case "$MODE" in
           if test -d /etc/ltsp/includes/$WO; then
             echo -n "installing ldm-themes-extra..."
             cp -r /etc/ltsp/includes/$WO/* $ROOT/$WO
+            if test -h $ROOT/$WO/default; then
+              rm $ROOT/$WO/default
+            if
+            ln -s $ROOT/$WO/amxa $ROOT/$WO/default
             echo "ok"
           fi
         fi
