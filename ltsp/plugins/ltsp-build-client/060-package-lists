@@ -1,0 +1,22 @@
+case "$MODE" in
+    commandline)
+        add_option "package-lists" "`eval_gettext "add packages from package-lists"`" "advanced" "true"
+        ;;
+    configure)
+        if [ -n "$option_package_lists_value" ]; then
+            PACKAGE_LISTS="$(echo $option_package_lists_value)"
+        fi
+        if test -z "$PACKAGE_LISTS"; then
+           PACKAGE_LISTS=$(ls /etc/ltsp/package-lists|xargs)
+        fi
+        ;;
+    finalization)
+        echo -n "installing ltsp-install..."
+        for LIST in "$PACKAGE_LISTS"; do
+          for PACK in $(cat /etc/ltsp/package-lists/$LIST; do
+             chroot $ROOT apt-get install --yes $PACK
+          done
+        done
+        echo "ok"
+        ;;
+esac
