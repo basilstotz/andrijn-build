@@ -20,15 +20,18 @@ do_start()
   # restore local user setup
 
   # bind home_local
-  mount --bind /mnt/home /home
+  if ! test -d /mnt/local;then mkdir -p /mnt/local/;fi
+  if test -d /mnt/local/home;then exit 1;fi
+  if ! mount -L ltsp-local /mnt/local/; then
+    mount --bind /mnt/local/home /home
 
-  if ! test -d /mnt/local/etc/; then mkdir -p /mnt/local/etc; fi
-  if test -f /mnt/local/etc/passwd; then 
-       cat /rofs/etc/passwd /mnt/local/etc/passwd >/etc/passwd
-       cat /rofs/etc/group /mnt/local/etc/group >/etc/group
-       cat /rofs/etc/shadow /mnt/local/etc/shadow >/etc/shadow
+    if ! test -d /mnt/local/etc/; then mkdir -p /mnt/local/etc; fi
+    if test -f /mnt/local/etc/passwd; then 
+        cat /rofs/etc/passwd /mnt/local/etc/passwd >/etc/passwd
+        cat /rofs/etc/group /mnt/local/etc/group >/etc/group
+        cat /rofs/etc/shadow /mnt/local/etc/shadow >/etc/shadow
+    fi
   fi
-
 }
 
 #
@@ -36,21 +39,23 @@ do_start()
 #
 do_stop()
 {
-  # save local user setup
-  echo "" > /mnt/local/etc/passwd
-  for user in "$(ls /nmt/home/)"; do
-    cat /etc/passwd | grep "^$user" >>/mnt/local/etc/passwd
-  done
-  echo "" > /mnt/local/etc/shadow
-  echo "" > /mnt/local/etc/group
-  for name in "$(cat /mnt/local/passwd|cut -d: -f1|xargs)"; do
-     cat /etc/shadow|grep "^$name:" >>/mnt/local/etc/shadow
-     cat /etc/group|grep "^$name:" >>/mnt/local/etc/group
-  done
+  if test -d /mnt/local/home; then
+    # save local user setup
+    echo "" > /mnt/local/etc/passwd
+    for user in "$(ls /nmt/home/)"; do
+      cat /etc/passwd | grep "^$user" >>/mnt/local/etc/passwd
+    done
+    echo "" > /mnt/local/etc/shadow
+    echo "" > /mnt/local/etc/group
+    for name in "$(cat /mnt/local/passwd|cut -d: -f1|xargs)"; do
+      cat /etc/shadow|grep "^$name:" >>/mnt/local/etc/shadow
+      cat /etc/group|grep "^$name:" >>/mnt/local/etc/group
+    done
 
-  # umount /home_local
-  umount /home
-
+    # umount /home_local
+    umount /home
+    umount /mnt/local
+ fi
 }
 
 #
