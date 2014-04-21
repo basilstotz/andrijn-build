@@ -11,11 +11,12 @@ ltsp-build-client \
     --purge-chroot \
     --chroot $chroot \
     --install-debs-dir /etc/ltsp/debs \
+    --debconf-seeds /etc/ltsp/debconf.seeds \
     --fat-client \
     --fat-client-desktop ubuntu-desktop \
+    --language-support-german \
     --ldap-auth \
     --multiuser-wine \
-    --debconf-seeds /etc/ltsp/debconf.seeds \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
     --ldm-themes-extra \
     --late-packages "language-pack-de language-pack-gnome-de  

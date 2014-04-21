@@ -9,7 +9,7 @@ case "$MODE" in
             if ! test -d $ROOT/var/lib/tftpboot/ltsp; then
                mkdir -p $ROOT/var/lib/tftpboot/ltsp
             fi
-            cp -r /var/lib/tftpboot/ltsp $ROOT/vat/lib/tftpboot/
+            cp -r /var/lib/tftpboot/ltsp $ROOT/var/lib/tftpboot/
             echo "ok"
         fi
         ;;
