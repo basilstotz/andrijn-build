@@ -19,6 +19,4 @@ ltsp-build-client \
     --multiuser-wine \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
     --ldm-themes-extra \
-    --late-packages "language-pack-de language-pack-gnome-de  
-                     language-pack-kde-de hyphen-de libreoffice-l10n-de 
-                     myspell-de-ch mythes-de-ch e3 nmap xosview" | tee build.log
+    --late-packages "e3 nmap xosview" | tee build.log
