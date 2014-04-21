@@ -3,6 +3,9 @@
 chroot="kiosk"
 
 ltsp-build-client \
+    --mirror http://localhost:3142/ch.archive.ubuntu.com/ubuntu/ \
+    --updates-mirror http://ch.archive.ubuntu.com/ubuntu/ \
+    --security-mirror http://localhost:3142/ch.archive.ubuntu.com/ubuntu/ \
     --arch i386 \
     --skipimage \
     --purge-chroot \
@@ -17,4 +20,4 @@ ltsp-build-client \
     --ldm-themes-extra \
     --late-packages "language-pack-de language-pack-gnome-de  
                      language-pack-kde-de hyphen-de libreoffice-l10n-de 
-                     myspell-de-ch mythes-de-ch emacs nmap xosview" | tee build.log
+                     myspell-de-ch mythes-de-ch e3 nmap xosview" | tee build.log
