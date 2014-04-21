@@ -13,6 +13,7 @@ case "$MODE" in
          else
             echo "file not found: /etc/nsswitch.conf"
          fi
+         echo "*;*;*;A10000-2400;plugdev,fuse,scanner,video,autio" >> $ROOT/etc/security/group.conf
        fi
        ;;
 esac
