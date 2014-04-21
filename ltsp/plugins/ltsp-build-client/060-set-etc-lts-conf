@@ -1,0 +1,17 @@
+case "$MODE" in
+    commandline)
+        add_option "set-etc-lts-conf" "`eval_gettext "sets default lts.conf"`" "advanced" "false"
+        ;;
+    configure)
+        if test -n $option_set_etc_lts_conf_value; then
+          SET_ETC_LTS_CONF=true
+        fi
+        ;;
+    finalization)
+        if $SET_ETC_LTS_CONF; then
+            echo -n "install lts.conf..."
+            cp /etc/ltsp/includes/etc/lts.conf $ROOT/etc/lts.conf
+            echo "ok"
+        fi
+        ;;
+esac

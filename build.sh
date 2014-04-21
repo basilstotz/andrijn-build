@@ -16,6 +16,7 @@ ltsp-build-client \
     --fat-client \
     --fat-client-desktop ubuntu-desktop \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
+    --set-etc-lts-conf \
     --ldm-themes-extra \
     --copy-tftpboot \
     --language-support-german \
