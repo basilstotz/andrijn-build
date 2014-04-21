@@ -56,7 +56,7 @@ ldap-auth-config	ldap-auth-config/move-to-debconf	boolean	true
 
 # for internal use; can be preseeded
 man-db	man-db/auto-update	boolean	true
--
+
 # Dateipfad des Kerberos-Berechtigungszwischenspeichers:
 nslcd	nslcd/ldap-sasl-krb5-ccname	string	/var/run/nslcd/nslcd.tkt
 
