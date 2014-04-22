@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Hochstrasser
-Comment=Neue Wege im Sprachunterricht
-Exec=hochstrasser.sh
-Terminal=false
-Type=Application
-Icon=/home/lehrmittel/wineprefix/Hochstrasser/Hochstrasser.png
-Categories=Application;Education;
