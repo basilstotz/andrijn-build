@@ -17,7 +17,7 @@
 do_start()
 {
    echo "starting ltsp-sshkeys"
-   ltsp-update-sshkeys $(getltscfg LDM_SERVER) -e - >> /etc/ssh/ssh_known_hosts
+   ssh-keyscan $(getltscfg LDM_SERVER)|grep -v ^#  >> /etc/ssh/ssh_known_hosts
 }  
 
 
