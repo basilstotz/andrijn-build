@@ -1,0 +1,49 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          skeleton
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Example initscript
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.
+### END INIT INFO
+
+
+#
+# Function that starts the daemon/service
+#
+do_start()
+{
+   echo "starting ltsp-sshkeys"
+   ltsp-update-sshkeys $(getltscfg LDM_SERVER) -e - >> /etc/ssh/ssh_knowns_hosts
+} 
+
+
+#
+# Function that stops the daemon/service
+#
+do_stop()
+{
+   echo "stopping ltsp-ldap (dummy)"
+}
+
+
+
+
+  case "$1" in
+    start)
+        do_start
+        ;;
+    stop)
+        do_stop
+        ;;
+    *)
+	echo "Usage: $SCRIPTNAME {start|stop}" >&2
+	exit 3
+	;;
+  esac
+
+  exit 
+
