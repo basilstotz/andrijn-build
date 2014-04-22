@@ -1,0 +1,18 @@
+case "$MODE" in
+    commandline)
+        add_option "custom-launcher" "`eval_gettext "install custom launcher"`" "advanced" "false"
+        ;;
+    configure)
+        if test -n $option_custom_launcher_value; then
+          CUSTOM_LAUNCHER=true
+        fi
+        ;;
+    finalization)
+       if test -n $CUSTOM_LAUNCHER; then
+         echo "installing custom launcher"
+         cp /etc/ltsp/includes/usr/share/applications/*.desktop $ROOT/usr/share/applications/.
+         cp /etc/ltsp/includes/usr/share/pixmaps/* $ROOT/usr/share/pixmaps/.
+         echo "ok"
+       fi
+       ;;
+esac
