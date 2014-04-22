@@ -26,7 +26,7 @@ do_start()
    fi
    
    sed "s/^base .*$/base ${LDAP_BASE}/" -i /etc/ldap.conf
-   sed "s/^uri .*$/base ${LDAP_URI}/" -i /etc/ldap.conf
+   sed "s/^uri .*$/uri ${LDAP_URL}/" -i /etc/ldap.conf
  
 
    service libnss-ldap start
