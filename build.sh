@@ -12,7 +12,6 @@ ltsp-build-client \
     --arch i386 \
     --skipimage \
     --install-debs-dir /etc/ltsp/debs \
-    --terminal-server \
     --update-sshkeys \ 
     --fat-client \
     --fat-client-desktop ubuntu-desktop \
@@ -26,3 +25,4 @@ ltsp-build-client \
     --ldap-auth \
     --multiuser-wine \
     --package-lists "debug.list" | tee build.log
+
