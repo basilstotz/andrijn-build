@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Xosview
-Comment=X based system monitor
-Exec=xosview
-Terminal=false
-Type=Application
-Icon=xosview.xpm
-Categories=Application;System;
