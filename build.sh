@@ -13,6 +13,7 @@ ltsp-build-client \
     --skipimage \
     --install-debs-dir /etc/ltsp/debs \
     --terminal-server \
+    --update-sshkeys \ 
     --fat-client \
     --fat-client-desktop ubuntu-desktop \
     --debconf-seeds /etc/ltsp/debconf.seeds \
