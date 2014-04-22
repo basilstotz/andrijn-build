@@ -12,9 +12,9 @@ ltsp-build-client \
     --arch i386 \
     --skipimage \
     --install-debs-dir /etc/ltsp/debs \
-    --debconf-seeds /etc/ltsp/debconf.seeds \
     --fat-client \
     --fat-client-desktop ubuntu-desktop \
+    --debconf-seeds /etc/ltsp/debconf.seeds \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
     --set-etc-lts-conf \
     --ldm-themes-extra \
