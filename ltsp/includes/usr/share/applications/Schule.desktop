@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Schule
+Exec=/usr/lib/chromium-browser/chromium-browser --app=http://www.bubendorf-schule.ch/
+Icon=/usr/local/share/icons/Schule.png
+StartupWMClass=www.bubendorf-schule.ch

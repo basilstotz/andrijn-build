@@ -1,0 +1,15 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Mille feuilles: magazine 3.3
+Name[de]=Mille feuilles 3.3
+GenericName[de]=Mille feuilles 3.3
+Comment[de]=Mille feuilles 3.3
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/3.1/START.html
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/home/lehrmittel/millefeuille/3.3/mf3.3.png
+Categories=Education;
+StartupNotify=true
+StartupWMClass=home_lehrmittel_millefeuille_3.1_START.html

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Logisch 3
+GenericName=Logisch 3
+Comment=Rechnen und üben 3
+Icon=/home/lehrmittel/logisch/logisch3/logisch3.ico
+Exec=gnash-gtk-launcher --hide-menubar /home/lehrmittel/logisch/logisch3/logisch3.swf
+Terminal=false
+Categories=Education
+
+

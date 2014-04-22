@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Blitzrechnen
+Exec=blitzrechnen.sh
+Icon=/home/lehrmittel/blitzrechnen/blitzrechnen.png
+Type=Application
+StartupNotify=true
+Categories=Education
+

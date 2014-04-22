@@ -1,0 +1,48 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.1
+Name=Mille feuilles
+Name[de]=Mille feuilles
+GenericName=Mille feuilles
+GenericName[de]=Mille feuilles
+Comment=Französisch lernen
+Comment[de]=Französisch lernen
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/index.html
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/home/lehrmittel/millefeuille/mf3.png
+Categories=Education;
+StartupNotify=true
+Actions=3.1;3.2;3.3;4.1;4.2;4.3;
+
+[Desktop Action 3.1]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/3.1/START.html
+Name=Part   3.1
+Icon=/home/lehrmittel/millefeuille/3.1/mf3.1.png
+
+[Desktop Action 3.2]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/3.2/START.html
+Name=Part   3.2
+Icon=/home/lehrmittel/millefeuille/3.2/mf3.2.png
+
+[Desktop Action 3.3]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/3.3/START.html
+Name=Part   3.3
+Icon=/home/lehrmittel/millefeuille/3.3/mf3.3.png
+
+[Desktop Action 4.1]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/4.1/START.html
+Name=Part   4.1
+Icon=/home/lehrmittel/millefeuille/4.1/mf41.png
+
+[Desktop Action 4.2]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/4.2/START.html
+Name=Part   4.2
+Icon=/home/lehrmittel/millefeuille/4.2/mf42.png
+
+[Desktop Action 4.3]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/4.3/START.html
+Name=Part    4.3
+Icon=/home/lehrmittel/millefeuille/4.3/mf43.png
+

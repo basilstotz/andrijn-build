@@ -1,0 +1,44 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Logisch
+GenericName=Logisch 
+Comment=Rechnen und üben 
+Icon=/home/lehrmittel/logisch/logisch1/logisch1.ico
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/index.html
+Terminal=false
+Categories=Education
+Actions=1;2;3;4;5;6;
+
+
+[Desktop Action 1]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch1/logisch1.htm
+Name=Teil 1
+Icon=/home/lehrmittel/logisch/logisch1/logisch1.ico
+
+[Desktop Action 2]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch2/logisch2.htm
+Name=Teil 2
+Icon=/home/lehrmittel/logisch/logisch2/logisch2.ico
+
+[Desktop Action 3]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch3/logisch3.htm
+Name=Teil 3
+Icon=/home/lehrmittel/logisch/logisch3/logisch3.ico
+
+[Desktop Action 4]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch4/logisch4.htm
+Name=Teil 4
+Icon=/home/lehrmittel/logisch/logisch4/logisch4.ico
+
+[Desktop Action 5]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch5/logisch5.htm
+Name=Teil 5
+Icon=/home/lehrmittel/logisch/logisch5/logisch5.ico
+
+[Desktop Action 6]
+Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch6/logisch6.htm
+Name=Teil 6
+Icon=/home/lehrmittel/logisch/logisch6/logisch6.ico
+
+

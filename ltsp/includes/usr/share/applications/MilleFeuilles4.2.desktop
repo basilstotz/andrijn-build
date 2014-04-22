@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=MilleFeuilles 4.2
+Exec=/usr/lib/chromium-browser/chromium-browser --app=file:///home/lehrmittel/millefeuille/4.2/START.html
+Icon=/home/lehrmittel/millefeuille/4.2/mf42.png
+StartupWMClass=home_lehrmittel_millefeuille_4.2_START.html

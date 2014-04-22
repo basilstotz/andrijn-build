@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Tux Math 
+GenericName=Educational math game
+Comment=Tux Math - Learn math with Tux!
+Exec=tuxmath --nosound
+Icon=tuxmath
+Type=Application
+Terminal=false
+Categories=Education;Math;
+## X-SuSE-translate=false
+X-Ubuntu-Gettext-Domain=tuxmath
