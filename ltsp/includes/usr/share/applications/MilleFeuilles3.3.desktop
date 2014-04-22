@@ -9,7 +9,5 @@ Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/millefeuille/3.1/ST
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=/home/lehrmittel/millefeuille/3.3/mf3.3.png
+Icon=mf3.3.png
 Categories=Education;
-StartupNotify=true
-StartupWMClass=home_lehrmittel_millefeuille_3.1_START.html

@@ -5,5 +5,4 @@ Terminal=false
 Type=Application
 Name=MilleFeuilles 4.1
 Exec=/usr/lib/chromium-browser/chromium-browser --app=file:///home/lehrmittel/millefeuille/4.1/START.html
-Icon=/home/lehrmittel/millefeuille/4.1/mf41.png
-StartupWMClass=home_lehrmittel_millefeuille_4.1_START.html
+Icon=mf41.png

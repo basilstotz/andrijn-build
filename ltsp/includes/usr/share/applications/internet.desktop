@@ -4,7 +4,7 @@ Type=Application
 Name=Internet
 GenericName=Internet 
 Comment=Serven und mehr... 
-Icon=/home/lehrmittel/internet/internet.png
+Icon=internet.png
 Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/internet/index.html
 Terminal=false
 Categories=Education
@@ -14,21 +14,21 @@ Actions=1;2;3;4;5;6;
 [Desktop Action 1]
 Exec=/usr/bin/chromium-browser --app=http://www.blindekuh.de
 Name=Blinde Kuh
-Icon=/home/lehrmittel/internet/blindekuh.png
+Icon=blindekuh.png
 
 [Desktop Action 2]
 Exec=/usr/bin/chromium-browser --app=http://www.kindersuchmaschine.net
 Name=Kindersuchmaschine
-Icon=/home/lehrmittel/internet/kindersuchmaschine.png
+Icon=kindersuchmaschine.png
 
 [Desktop Action 3]
 Exec=/usr/bin/chromium-browser --app=http://www.fragfinn.de
 Name=Frag Finn
-Icon=/home/lehrmittel/internet/fragfinn.png
+Icon=fragfinn.png
 
 [Desktop Action 4]
 Exec=/usr/bin/chromium-browser --app=http://www.bubendorf-schule.ch
 Name=Schule Bubendorf
-Icon=/home/lehrmittel/internet/Schule.png
+Icon=Schule.png
 
 

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Blitzrechnen
-Exec=blitzrechnen.sh
-Icon=/home/lehrmittel/blitzrechnen/blitzrechnen.png
+Exec=/usr/share/bin/blitzrechnen.sh
+Icon=blitzrechnen.png
 Type=Application
 StartupNotify=true
 Categories=Education

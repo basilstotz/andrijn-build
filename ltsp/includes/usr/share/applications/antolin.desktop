@@ -4,7 +4,7 @@ Type=Application
 Name=Antolin
 GenericName=Antolin 
 Comment=Mit lesen Punkten
-Icon=/home/lehrmittel/antolin/antolin.gif
+Icon=antolin.gif
 Exec=/usr/bin/chromium-browser --app=https://www.antolin.de
 Terminal=false
 Categories=Education
