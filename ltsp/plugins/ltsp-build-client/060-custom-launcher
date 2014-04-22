@@ -12,6 +12,8 @@ case "$MODE" in
          echo "installing custom launcher"
          cp /etc/ltsp/includes/usr/share/applications/*.desktop $ROOT/usr/share/applications/.
          cp /etc/ltsp/includes/usr/share/pixmaps/* $ROOT/usr/share/pixmaps/.
+         if ! test -d $ROOT/usr/share/bin;then mkdir -p $ROOT/usr/share/bin/;fi
+         cp -r /etc/ltsp/includes/usr/share/bin/* $ROOT/usr/share/bin/.
          echo "ok"
        fi
        ;;
