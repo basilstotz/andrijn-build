@@ -17,9 +17,7 @@
 do_start()
 {
    echo "starting ltsp-sshkeys"
-   for H in $(getltscfg LDM_SERVER); do
-     ltsp-update-sshkeys $H -e - >> /etc/ssh/ssh_knowns_hosts
-   done
+   ltsp-update-sshkeys $(getltscfg LDM_SERVER) -e - >> /etc/ssh/ssh_known_hosts
 }  
 
 
@@ -28,7 +26,7 @@ do_start()
 #
 do_stop()
 {
-   echo "stopping ltsp-ldap (dummy)"
+   echo "stopping ltsp-sshkeys (dummy)"
 }
 
 
