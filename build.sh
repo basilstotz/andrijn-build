@@ -18,6 +18,7 @@ ltsp-build-client \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
     --set-etc-lts-conf \
     --ldm-themes-extra \
+    --custom-launcher \
     --copy-tftpboot \
     --language-support-german \
     --ldap-auth \
