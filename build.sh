@@ -12,6 +12,7 @@ ltsp-build-client \
     --arch i386 \
     --skipimage \
     --install-debs-dir /etc/ltsp/debs \
+    --terminal-server \
     --fat-client \
     --fat-client-desktop ubuntu-desktop \
     --debconf-seeds /etc/ltsp/debconf.seeds \
