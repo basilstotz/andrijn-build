@@ -3,12 +3,12 @@ case "$MODE" in
         add_option "ldap-auth" "`eval_gettext "install ldap auth"`" "advanced" "false"
         ;;
     configure)
-        if test -n $option_ladap_auth_value; then
+        if test -n $option_ldap_auth_value; then
           LDAP_AUTH=true
         fi
         ;;
     finalization)
-       if $LDAP_AUTH; then
+       if test -n $LDAP_AUTH; then
          echo "installing ldap-auth"
          chroot $ROOT apt-get install --yes ldap-utils libpam-ldap libnss-ldap nslcd
          chroot $ROOT update-rc.d -f nslcd remove 
