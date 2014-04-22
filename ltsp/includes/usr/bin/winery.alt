@@ -1,21 +1,20 @@
 #!/bin/sh
 
-
 if [ $# -ne 2 ]; then
   echo 
-  echo "Usage: $(basename $0) \"<winecontainer>\" \"/path/to/app.exe>\" "
+  echo "Usage: $(basename $0) \"</path/to/winecontainer>\" \"<drive:/windows/path/to/app.exe>\" "
   echo 
   echo "       example:" 
-  echo "       $(basename $0) \"Blitzrechnen\" \"Klett/Blitzrechnen/Blitzrechnen.exe\" "
+  echo "       $(basename $0) \"/home/wine/Blitzrechnen/\" \"c:/Program Files/Klett/Blitzrechnen/Blitzrechnen.exe\" "
   echo 
   exit 1
 fi
  
 
-MASTERPREFIX="/home/lehrmittel/wineprefix/$1"
+MASTERPREFIX="$1"
 EXEPATH="$2"
 
-if ! [ -d "${MASTERPREFIX}/drive_c/Program Files" ]; then
+if ! [ -d "${MASTERPREFIX}/drive_c" ]; then
   echo
   echo "Error: '${MASTERPREFIX}' looks not like a wine-container. Exiting..."
   echo 
@@ -27,8 +26,9 @@ WINEPREFIX="${HOME}/.$(basename "${MASTERPREFIX}")"
 
 # remove WINEPREFIX if newer version exists
 if [ -d "$WINEPREFIX" ]; then
+   echo -n "Tha app is already installed, "
    if [ "$MASTERPREFIX" -nt "$WINEPREFIX" ];  then
-     echo -n "A newer app exists. Removing old..."
+     echo -n "but a newer app exists. Removing old..."
      rm -rf "$WINEPREFIX"
      echo "OK"
    else
@@ -36,17 +36,15 @@ if [ -d "$WINEPREFIX" ]; then
    fi
 fi
 
-#rm -rf "$WINEPREFIX"
-
 # install WINEPREFIX if missing
 
 if ! [ -d "$WINEPREFIX" ]; then
 
   # create and populate WINWPREFIX
 
-  echo -n "App does not exist. Installing..."
+  echo -n "The app does not exist. Installing..."
   mkdir -p "$WINEPREFIX"
-  lndir "$MASTERPREFIX" "$WINEPREFIX"
+  lndir "$MASTERPREFIX" "$WINEPREFIX" 2>/dev/null/ >/dev/null
   echo "OK"
   
   # empty profiles
@@ -63,8 +61,7 @@ if ! [ -d "$WINEPREFIX" ]; then
 
   # copy read/write files
   #                                 system.reg
-  for FILE in .no_prelaunch_window_flag system.reg userdef.reg; do
-    echo "${WINEPREFIX}/${FILE}"
+  for FILE in ".no_prelaunch_window_flag userdef.reg"; do
     if [ -h "${WINEPREFIX}/${FILE}" ]; then
        rm -f "${WINEPREFIX}/${FILE}"
        cp "${MASTERPREFIX}/${FILE}" "${WINEPREFIX}/${FILE}"
@@ -78,8 +75,6 @@ fi
 
 #start exe
 
-if ! [ "$2" = "install" ]; then
-#  env WINEPREFIX="${WINEPREFIX}" wine "${WINEPREFIX}/drive_c/${EXEPATH}"
-  env WINEPREFIX="${WINEPREFIX}" wine "${WINEPREFIX}/drive_c/Program Files/${EXEPATH}"
-fi
+env WINEPREFIX="${WINEPREFIX}" wine "${WINEPREFIX}/dosdevices/${EXEPATH}"
+
 exit $?
