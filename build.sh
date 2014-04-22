@@ -13,16 +13,16 @@ ltsp-build-client \
     --skipimage \
     --install-debs-dir /etc/ltsp/debs \
     --update-sshkeys \ 
-    --fat-client \
-    --fat-client-desktop ubuntu-desktop \
     --debconf-seeds /etc/ltsp/debconf.seeds \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
     --set-etc-lts-conf \
+    --ldap-auth \
+    --copy-tftpboot \
+    --fat-client \
+    --fat-client-desktop ubuntu-desktop \
     --ldm-themes-extra \
     --custom-launcher \
-    --copy-tftpboot \
     --language-support-german \
-    --ldap-auth \
     --multiuser-wine \
     --package-lists "debug.list" | tee build.log
 
