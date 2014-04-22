@@ -1,0 +1,17 @@
+case "$MODE" in
+    commandline)
+        add_option "terminal-server" "`eval_gettext "install a terminal server"`" "advanced" "false"
+        ;;
+    configure)
+        if test -n $option_terminal_server_value; then
+          TERMINAL_SERVER=true
+        fi
+        ;;
+    finalization)
+       if test -n $TERMINAL_SERVER; then
+         echo "installing terminal server"
+         chroot $ROOT apt-get install --yes ltsp-server
+         echo "ok"
+       fi
+       ;;
+esac
