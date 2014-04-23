@@ -25,6 +25,6 @@ ltsp-build-client \
     --custom-launcher \
     --language-support-german \
     --multiuser-wine \
-    --package-lists  | tee build.log
+    --package-lists "debug.list edu.list standard.list"  | tee build.log
 
 
