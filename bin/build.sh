@@ -2,8 +2,7 @@
 
 chroot="kiosk"
 
-#ltsp-build-client \
-echo \
+ltsp-build-client \
     --purge-chroot \
     --chroot "$chroot" \
     --mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
@@ -26,6 +25,6 @@ echo \
     --custom-launcher \
     --language-support-german \
     --multiuser-wine \
-    --package-lists "debug.list" | tee build.log
+    --package-lists  | tee build.log
 
 
