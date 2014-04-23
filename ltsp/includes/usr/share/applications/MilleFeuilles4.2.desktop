@@ -6,4 +6,4 @@ Type=Application
 Name=MilleFeuilles 4.2
 Exec=/usr/lib/chromium-browser/chromium-browser --app=file:///home/lehrmittel/millefeuille/4.2/START.html
 Icon=mf42.png
-
+Categories=Education
