@@ -1,6 +1,6 @@
 #!/bin/sh
 
-chroot="kiosk"
+arch="kiosk"
 
-ltsp-update-image /opt/ltsp/$chroot/
+ltsp-update-image --arch $arch
 
