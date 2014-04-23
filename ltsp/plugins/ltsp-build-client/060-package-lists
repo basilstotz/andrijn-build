@@ -7,7 +7,8 @@ case "$MODE" in
             PACKAGE_LISTS="$(echo $option_package_lists_value)"
         fi
         if test -z "$PACKAGE_LISTS"; then
-# ???         PACKAGE_LISTS=$(ls /etc/ltsp/package-lists|xargs)
+              echo "getting all lists!"
+              PACKAGE_LISTS=$(ls /etc/ltsp/package-lists|xargs)
               echo -n ""
         fi
         ;;
