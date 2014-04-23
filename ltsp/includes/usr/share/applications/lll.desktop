@@ -1,8 +1,7 @@
 [Desktop Entry]
 Name=Lose Luege Läse
 Exec=wine /home/lehrmittel/lll/Start.exe
-Icon=/home/lehrmittel/lll/lll.png
+Icon=lll.png
 Type=Application
 Categories=Education
-StartupNotify=true
 
