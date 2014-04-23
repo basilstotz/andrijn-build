@@ -10,7 +10,7 @@ case "$MODE" in
     finalization)
        if test "true" = "$TERMINAL_SERVER"; then
          echo "installing terminal server items"
-         chroot $ROOT apt-get install --yes ldm-server nbd-server tftpd-hpa 
+         chroot $ROOT apt-get install --yes ltsp-server 
          echo "ok"
        fi
        ;;
