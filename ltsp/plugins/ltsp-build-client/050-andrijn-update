@@ -9,6 +9,7 @@ case "$MODE" in
         ;;
     finalization)
         echo -n "installing ltsp-install..."
+        chroot $ROOT apt-get install zsync
         cp /etc/ltsp/includes/etc/init.d/ltsp-install $ROOT/etc/init.d/.
         echo "LTSP_IMAGES_URL=$ANDRIJN_IMAGES_URL" >> $ROOT/etc/default/ltsp-install
         chroot $ROOT update-rc.d ltsp-install defaults
