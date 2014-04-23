@@ -9,10 +9,10 @@ help:
 all: build image publish
 
 build:
-	@./build.sh
+	@./bin/build.sh
 
 image:
-	@./image.sh
+	@./bin/image.sh
 
 publish:
-	@./publish.sh
+	@./bin/publish.sh
