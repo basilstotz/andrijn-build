@@ -5,9 +5,6 @@ chroot="kiosk"
 ltsp-build-client \
     --purge-chroot \
     --chroot "$chroot" \
-    --mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
-    --updates-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
-    --security-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
     --skip-upgrade \
     --arch i386 \
     --skipimage \
@@ -19,12 +16,17 @@ ltsp-build-client \
     --ldap-auth \
     --copy-tftpboot \
     --terminal-server \
+    --multiuser-wine \
     --fat-client \
     --fat-client-desktop "ubuntu-desktop" \
+    --calibri-font \
     --ldm-themes-extra \
     --custom-launcher \
     --language-support-german \
-    --multiuser-wine \
     --package-lists "debug.list edu.list standard.list"  | tee build.log
 
+
+#     --mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
+#    --updates-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
+#    --security-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
 
