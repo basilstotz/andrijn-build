@@ -3,16 +3,16 @@ TARGETS = all build image publish
 .PHONY: help
 
 help:
-	@echo "Targets are:
-	@echo " ${TARGETS} | fmt
+	@echo "Targets are:"
+	@echo "   ${TARGETS}" | fmt
 
 all: build image publish
 
 build:
-	build.sh
+	@./build.sh
 
 image:
-	image.sh
+	@./image.sh
 
 publish:
-	publish.sh
+	@./publish.sh
