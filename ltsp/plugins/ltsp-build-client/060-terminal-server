@@ -8,7 +8,7 @@ case "$MODE" in
         fi
         ;;
     finalization)
-       if test -n $TERMINAL_SERVER; then
+       if test "true" = "$TERMINAL_SERVER"; then
          echo "installing terminal server"
          chroot $ROOT apt-get install --yes ltsp-server
          echo "ok"

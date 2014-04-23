@@ -15,7 +15,7 @@ ltsp-build-client \
     --update-sshkeys \ 
     --debconf-seeds /etc/ltsp/debconf.seeds \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
-    --set-etc-lts-conf \
+    --set-lts-conf \
     --ldap-auth \
     --copy-tftpboot \
     --fat-client \
@@ -24,5 +24,5 @@ ltsp-build-client \
     --custom-launcher \
     --language-support-german \
     --multiuser-wine \
-    --package-lists "debug.list" | tee build.log
+    --package-lists "debug.list"
 
