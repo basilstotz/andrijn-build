@@ -1,0 +1,19 @@
+case "$MODE" in
+    commandline)
+        add_option "calibri-font" "`eval_gettext "install calibri font"`" "advanced" "false"
+        ;;
+    configure)
+        if test -n $option_calibri_font_value; then
+          CALIBRI_FONT=true
+        fi
+        ;;
+    finalization)
+       if test -n $CALIBRI_FONT; then
+         echo "installing calibri font"
+         P="usr/share/fonts/truetype/calibri"
+         mkdir -p $ROOT/$P
+         cp /etc/ltsp/$P/* $ROOT/$P/.
+         echo "ok"
+       fi
+       ;;
+esac
