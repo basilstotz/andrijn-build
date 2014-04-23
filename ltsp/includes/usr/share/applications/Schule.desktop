@@ -6,3 +6,4 @@ Type=Application
 Name=Schule
 Exec=/usr/lib/chromium-browser/chromium-browser --app=http://www.bubendorf-schule.ch/
 Icon=Schule.png
+Categories=Education
