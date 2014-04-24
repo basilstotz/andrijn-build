@@ -19,6 +19,7 @@ ltsp-build-client \
     --multiuser-wine \
     --fat-client \
     --fat-client-desktop "ubuntu-desktop" \
+    --multimedia
     --calibri-font \
     --ldm-themes-extra \
     --custom-launcher \
