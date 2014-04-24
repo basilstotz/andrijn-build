@@ -5,39 +5,39 @@ Name=Logisch
 GenericName=Logisch 
 Comment=Rechnen und üben 
 Icon=logisch1.png
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/index.html
+Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/index.html
 Terminal=false
 Categories=Education
 Actions=1;2;3;4;5;6;
 
 
 [Desktop Action 1]
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch1/logisch1.htm
+Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch1/logisch1.htm
 Name=Teil 1
 Icon=logisch1.png
 
 [Desktop Action 2]
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch2/logisch2.htm
+Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch2/logisch2.htm
 Name=Teil 2
 Icon=logisch2.ico
 
 [Desktop Action 3]
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch3/logisch3.htm
+Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch3/logisch3.htm
 Name=Teil 3
 Icon=logisch3.png
 
 [Desktop Action 4]
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch4/logisch4.htm
+Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch4/logisch4.htm
 Name=Teil 4
 Icon=logisch4.png
 
 [Desktop Action 5]
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch5/logisch5.htm
+Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch5/logisch5.htm
 Name=Teil 5
 Icon=logisch5.png
 
 [Desktop Action 6]
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/logisch/logisch6/logisch6.htm
+Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch6/logisch6.htm
 Name=Teil 6
 Icon=logisch6.png
 
