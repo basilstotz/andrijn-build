@@ -22,6 +22,7 @@ ltsp-build-client \
     --multimedia
     --calibri-font \
     --ldm-themes-extra \
+    --propietary-apps \
     --custom-launcher \
     --language-support-german \
     --package-lists "debug.list edu.list standard.list"  | tee build.log
