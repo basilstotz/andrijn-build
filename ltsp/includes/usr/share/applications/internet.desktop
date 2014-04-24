@@ -5,29 +5,29 @@ Name=Internet
 GenericName=Internet 
 Comment=Serven und mehr... 
 Icon=internet.png
-Exec=/usr/bin/chromium-browser --app=file:///home/lehrmittel/internet/index.html
+Exec=chromium-browser --app=$(/usr/share/bin/web-path)/internet/index.html
 Terminal=false
 Categories=Education
 Actions=1;2;3;4;5;6;
 
 
 [Desktop Action 1]
-Exec=/usr/bin/chromium-browser --app=http://www.blindekuh.de
+Exec=chromium-browser --app=http://www.blindekuh.de
 Name=Blinde Kuh
 Icon=blindekuh.png
 
 [Desktop Action 2]
-Exec=/usr/bin/chromium-browser --app=http://www.kindersuchmaschine.net
+Exec=chromium-browser --app=http://www.kindersuchmaschine.net
 Name=Kindersuchmaschine
 Icon=kindersuchmaschine.png
 
 [Desktop Action 3]
-Exec=/usr/bin/chromium-browser --app=http://www.fragfinn.de
+Exec=chromium-browser --app=http://www.fragfinn.de
 Name=Frag Finn
 Icon=fragfinn.png
 
 [Desktop Action 4]
-Exec=/usr/bin/chromium-browser --app=http://www.bubendorf-schule.ch
+Exec=chromium-browser --app=http://www.bubendorf-schule.ch
 Name=Schule Bubendorf
 Icon=Schule.png
 
