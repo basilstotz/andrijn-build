@@ -10,7 +10,16 @@ case "$MODE" in
     finalization)
        if test "true" = "$TERMINAL_SERVER"; then
          echo "installing terminal server items"
-         chroot $ROOT apt-get install --yes ltsp-server 
+
+         chroot $ROOT apt-get install --yes ltsp-server
+
+         if test -d /var/lib/tftpboot/ltsp/; then
+            echo -n "copying tftpboot..."
+            if ! test -d $ROOT/var/lib/tftpboot/ltsp; then
+               mkdir -p $ROOT/var/lib/tftpboot/ltsp
+            fi
+            cp -r /var/lib/tftpboot/ltsp $ROOT/var/lib/tftpboot/
+         fi
          echo "ok"
        fi
        ;;
