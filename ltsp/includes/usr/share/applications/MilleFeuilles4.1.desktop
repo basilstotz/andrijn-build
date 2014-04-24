@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=MilleFeuilles 4.1
-Exec=/usr/lib/chromium-browser/chromium-browser --app=file:///home/lehrmittel/millefeuille/4.1/START.html
+Exec=chromium-browser --app=$(/usr/share/bin/web-path)/millefeuille/4.1/START.html
 Icon=mf41.png
 Categories=Education
