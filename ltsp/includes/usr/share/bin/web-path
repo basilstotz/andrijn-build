@@ -1,0 +1,10 @@
+#!/bin/sh
+
+WEB_PATH="file:///usr/share/prop"
+if test -f /etc/default/prop
+  . /etc/default/prop
+fi
+
+echo "$WEB_PATH"
+
+exit
