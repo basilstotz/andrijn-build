@@ -11,7 +11,7 @@ case "$MODE" in
        if test -n $MULTIMEDIA; then
          echo "installing multimedia"
          chroot $ROOT apt-get install --yes ubuntu-restricted-extras libdvdread4
-         chroot $ROOT sh /usr/share/doc/install-css.sh
+         chroot $ROOT sh /usr/share/doc/libdvdread4/install-css.sh
          echo "ok"
        fi
        ;;
