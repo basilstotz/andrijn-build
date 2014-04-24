@@ -14,12 +14,11 @@ ltsp-build-client \
     --andrijn-update "http://172.16.42.10/ltsp-images" \
     --set-lts-conf \
     --ldap-auth \
-    --copy-tftpboot \
     --terminal-server \
     --multiuser-wine \
     --fat-client \
     --fat-client-desktop "ubuntu-desktop" \
-    --multimedia
+    --multimedia \
     --calibri-font \
     --ldm-themes-extra \
     --propietary-apps \
