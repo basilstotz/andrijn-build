@@ -1,0 +1,18 @@
+case "$MODE" in
+    commandline)
+        add_option "multimedia" "`eval_gettext "install multimedia support"`" "advanced" "false"
+        ;;
+    configure)
+        if test -n $option_multimedia_value; then
+          MULTIMEDIA=true
+        fi
+        ;;
+    finalization)
+       if test -n $MULTIMEDIA; then
+         echo "installing multimedia"
+         chroot $ROOT apt-get install --yes ubuntu-restricted-extras libdvdread4
+         chroot $ROOT sh /usr/share/doc/install-css.sh
+         echo "ok"
+       fi
+       ;;
+esac
