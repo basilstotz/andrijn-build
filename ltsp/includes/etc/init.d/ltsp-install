@@ -429,6 +429,9 @@ do_stop()
 
 
   case "$1" in
+    daemon)
+        do_daemon
+        ;;
     install)
         do_install
         do_start
