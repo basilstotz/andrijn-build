@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Lose Luege Läse
-Exec=wine $(/usr/share/bin/wine-path)/lll/Start.exe
+Exec=/usr/share/bin/wine.sh lll/Start.exe
 Icon=lll.png
 Type=Application
 Categories=Education

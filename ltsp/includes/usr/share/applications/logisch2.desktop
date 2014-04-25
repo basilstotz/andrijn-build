@@ -4,7 +4,7 @@ Name=Logisch 2
 GenericName=Logisch 2
 Comment=Rechnen und üben 2
 Icon=logisch2.png
-Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch2/logisch2.htm
+Exec=/usr/share/bin/chromium.sh logisch/logisch2/logisch2.htm
 Terminal=false
 Categories=Education
 

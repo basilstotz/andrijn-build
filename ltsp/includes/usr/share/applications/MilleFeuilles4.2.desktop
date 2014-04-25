@@ -4,6 +4,6 @@ Version=1.0
 Terminal=false
 Type=Application
 Name=MilleFeuilles 4.2
-Exec=chromium-browser --app=$(/usr/share/bin/web-path)/millefeuille/4.2/START.html
+Exec=/usr/share/bin/chromium.sh millefeuille/4.2/START.html
 Icon=mf42.png
 Categories=Education

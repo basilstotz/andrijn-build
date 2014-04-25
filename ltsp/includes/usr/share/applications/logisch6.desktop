@@ -4,7 +4,7 @@ Name=Logisch 6
 GenericName=Logisch 6
 Comment=Rechnen und üben 6
 Icon=logisch6.png
-Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch6/logisch6.htm
+Exec=/usr/share/bin/chromium.sh logisch/logisch6/logisch6.htm
 Terminal=false
 Categories=Education
 

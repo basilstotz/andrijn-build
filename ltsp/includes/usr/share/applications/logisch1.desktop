@@ -4,7 +4,7 @@ Name=Logisch 1
 GenericName=Logisch 1
 Comment=Rechnen und üben 1
 Icon=logisch1.png
-Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch1/logisch1.htm
+Exec=/usr/share/bin/chromium.sh logisch/logisch1/logisch1.htm
 Terminal=false
 Categories=Education
 

@@ -5,7 +5,7 @@ Name=Mille feuilles: magazine 3.1
 Name[de]=Mille feuilles: magazine 3.1
 GenericName[de]=Mille feuilles: magazine 3.1
 Comment[de]=Mille feuilles: magazine 3.1
-Exec=chromium-browser --app=$(/usr/share/bin/web-path)/millefeuille/3.1/START.html
+Exec=/usr/share/bin/chromium.sh millefeuille/3.1/START.html
 Terminal=false
 X-MultipleArgs=false
 Type=Application

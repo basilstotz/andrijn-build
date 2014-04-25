@@ -5,7 +5,7 @@ Name=Internet
 GenericName=Internet 
 Comment=Serven und mehr... 
 Icon=internet.png
-Exec=chromium-browser --app=$(/usr/share/bin/web-path)/internet/index.html
+Exec=/usr/share/bin/chromium.sh internet/index.html
 Terminal=false
 Categories=Education
 Actions=1;2;3;4;5;6;

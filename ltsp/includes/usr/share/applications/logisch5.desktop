@@ -4,7 +4,7 @@ Name=Logisch 5
 GenericName=Logisch 5
 Comment=Rechnen und üben 5
 Icon=logisch5.png
-Exec=/usr/bin/chromium-browser --app=$(/usr/share/bin/web-path)/logisch/logisch5/logisch5.htm
+Exec=/usr/share/bin/chromium.sh logisch/logisch5/logisch5.htm
 Terminal=false
 Categories=Education
 
