@@ -11,7 +11,8 @@ case "$MODE" in
         if $WINERY; then
           echo -n "installing winery..."
           chroot $ROOT apt-get install --yes wine
-          cp /etc/ltsp/includes/usr/bin/winery $ROOT/usr/bin/winery
+          # moved to /usr/share/bin/winery.sh, installed by propietary-apps
+          #cp /etc/ltsp/includes/usr/bin/winery $ROOT/usr/bin/winery
           echo "ok"
         fi
         ;;
