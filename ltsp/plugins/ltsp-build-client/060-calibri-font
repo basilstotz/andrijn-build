@@ -1,3 +1,5 @@
+#should be replaced by googles 'carlito' open source font
+
 case "$MODE" in
     commandline)
         add_option "calibri-font" "`eval_gettext "install calibri font"`" "advanced" "false"

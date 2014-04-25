@@ -4,13 +4,13 @@ case "$MODE" in
         ;;
     configure)
         if test -n $option_propietary_apps_value; then
-          PRPIETARY_APPS=true
+          PROPIETARY_APPS=true
         fi
         ;;
     finalization)
        if test -n $PROPRIETARY_APPS; then
          echo "installing propietary apps"
-         if ! test $ROOT/usr/share/prop/; then
+         if ! test -d $ROOT/usr/share/prop/; then
             mkdir -p $ROOT/usr/share/prop
          fi
          cp -r /etc/ltsp/prop/* $ROOT/usr/share/prop/ 
