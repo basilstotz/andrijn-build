@@ -368,8 +368,8 @@ do_sync()
 
         #remove old images
         echo "remove oldies"
-        if test -f $(printf "%06i" $(( $VERSION -3 ))).$TYPE; then
-          rm $(printf "%06i.*" $(( $VERSION -3 )))
+        if test -f $(printf "%06i" $(( $VERSION -1 ))).$TYPE; then
+          rm $(printf "%06i.*" $(( $VERSION -1 )))
         fi
         if test -f *.zs-old; then 
           rm *.zs-old 
