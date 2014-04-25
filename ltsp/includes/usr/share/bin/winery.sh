@@ -1,6 +1,7 @@
 #!/bin/sh
 
 
+
 if [ $# -ne 2 ]; then
   echo 
   echo "Usage: $(basename $0) \"<winecontainer>\" \"/path/to/app.exe>\" "
@@ -9,6 +10,12 @@ if [ $# -ne 2 ]; then
   echo "       $(basename $0) \"Blitzrechnen\" \"Klett/Blitzrechnen/Blitzrechnen.exe\" "
   echo 
   exit 1
+fi
+
+WINE_PATH="/usr/share/prop"
+
+if test -f /etc/default/prop; then
+  . /etc/default/prop
 fi
  
 
@@ -79,7 +86,12 @@ fi
 #start exe
 
 if ! [ "$2" = "install" ]; then
-#  env WINEPREFIX="${WINEPREFIX}" wine "${WINEPREFIX}/drive_c/${EXEPATH}"
-  env WINEPREFIX="${WINEPREFIX}" wine "${WINEPREFIX}/drive_c/Program Files/${EXEPATH}"
+
+  if [ -n "$LTSP_FATCLIENT" ]; then
+     env WINEPREFIX="${WINEPREFIX}" wine "${WINEPREFIX}/drive_c/Program Files/${EXEPATH}"
+  else
+     ltsp-localapps env WINEPREFIX="${WINEPREFIX}" wine "${WINEPREFIX}/drive_c/Program Files/${EXEPATH}"
+  fi  
 fi
+
 exit $?

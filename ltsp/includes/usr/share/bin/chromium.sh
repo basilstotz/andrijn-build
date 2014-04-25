@@ -1,15 +1,15 @@
 #!/bin/sh
 
-WINE_PATH="/usr/share/prop"
+WEB_PATH="file:///usr/share/prop"
 
 if test -f /etc/default/prop; then
   . /etc/default/prop
 fi
 
 if [ -n "$LTSP_FATCLIENT" ]; then
-  wine ${WINE_PATH}/$@
+  chromium --app=${WEB_PATH}/$@
 else
-  ltsp-localapps wine ${WINE_PATH}/$@
+  ltsp-localapps chromium --app=${WEB_PATH}/$@
 fi
 
 exit
