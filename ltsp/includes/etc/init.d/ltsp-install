@@ -376,7 +376,7 @@ do_sync()
         fi
 
         echo "$VERSION_neu" > version
-
+        notify-send "Ein neues Image steht bereit!\n\nNach dem nächsten Neustart wird dieses aktiviert." 
         echo "ok"
       fi #zsync
     fi # version neu
