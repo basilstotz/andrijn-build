@@ -7,9 +7,9 @@ if test -f /etc/default/prop; then
 fi
 
 if [ -n "$LTSP_FATCLIENT" ]; then
-  chromium --app=${WEB_PATH}/$@
+  chromium-browser --app=${WEB_PATH}/$@
 else
-  ltsp-localapps chromium --app=${WEB_PATH}/$@
+  ltsp-localapps chromium-browser --app=${WEB_PATH}/$@
 fi
 
 exit
