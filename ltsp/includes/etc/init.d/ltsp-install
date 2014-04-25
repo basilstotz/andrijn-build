@@ -341,6 +341,7 @@ do_sync()
     if test "$VERSION"  = "$VERSION_neu"; then
       echo "nothing to do"
     else
+      notify-send "Ein neues Image wurde entdeckt..."
       echo "copy $(printf "%06i.*" $VERSION) to $(printf "%06i.*" $VERSION_neu)..."
       if test -f $(printf "%06i" $VERSION).$TYPE; then
         cp $(printf "%06i" $VERSION).$TYPE $(printf "%06i" $VERSION_neu).$TYPE
@@ -376,7 +377,7 @@ do_sync()
         fi
 
         echo "$VERSION_neu" > version
-        notify-send "Ein neues Image steht bereit!\n\nNach dem nächsten Neustart wird dieses aktiviert." 
+        notify-send "Das neue Image steht bereit!\n\n(Nach dem nächsten Neustart ist es autmatisch aktiviert)" 
         echo "ok"
       fi #zsync
     fi # version neu
