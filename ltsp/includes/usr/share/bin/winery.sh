@@ -19,7 +19,7 @@ if test -f /etc/default/prop; then
 fi
  
 
-MASTERPREFIX="$(/usr/share/bin/wine-path)/$1"
+MASTERPREFIX=${WINE_PATH}/$1"
 EXEPATH="$2"
 
 if ! [ -d "${MASTERPREFIX}/drive_c/Program Files" ]; then
