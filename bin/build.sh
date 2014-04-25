@@ -11,7 +11,7 @@ ltsp-build-client \
     --update-sshkeys \
     --install-debs-dir "/etc/ltsp/debs" \
     --debconf-seeds "/etc/ltsp/preseeds/debconf.seeds" \
-    --andrijn-update "http://172.16.42.10/ltsp-images" \
+    --andrijn-update "http://172.16.42.1/ltsp-images" \
     --set-lts-conf \
     --ldap-auth \
     --terminal-server \
