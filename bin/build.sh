@@ -2,6 +2,14 @@
 
 chroot="kiosk"
 
+for mntpoint in dev/pts dev proc sys; do
+sudo umount -f $basedir/$chroot/$mntpoint 2>/dev/null \
+    || true
+done
+
+
+
+
 ltsp-build-client \
     --purge-chroot \
     --chroot "$chroot" \
@@ -15,7 +23,6 @@ ltsp-build-client \
     --set-lts-conf \
     --ldap-auth \
     --terminal-server \
-    --multiuser-wine \
     --fat-client \
     --fat-client-desktop "ubuntu-desktop" \
     --multimedia \
