@@ -28,7 +28,6 @@ ltsp-build-client \
     --multimedia \
     --calibri-font \
     --ldm-themes-extra \
-    --propietary-apps \
     --custom-launcher \
     --language-support-german \
     --package-lists "debug.list edu.list standard.list"  | tee build.log
@@ -37,4 +36,5 @@ ltsp-build-client \
 #     --mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
 #    --updates-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
 #    --security-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
+#    --propietary-apps \
 

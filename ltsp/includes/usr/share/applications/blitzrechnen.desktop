@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Blitzrechnen
-Exec=/usr/share/bin/wine.sh blitzrechnen/blitzrechnen.exe
-Icon=blitzrechnen.png
-Type=Application
-StartupNotify=true
-Categories=Education
-

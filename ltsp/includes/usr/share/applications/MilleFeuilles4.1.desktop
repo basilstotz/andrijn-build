@@ -1,9 +1,0 @@
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=MilleFeuilles 4.1
-Exec=/usr/share/bin/chromium.sh millefeuille/4.1/START.html
-Icon=mf41.png
-Categories=Education
