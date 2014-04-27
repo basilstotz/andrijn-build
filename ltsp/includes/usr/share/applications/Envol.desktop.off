@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Envol
-Comment=Französisch
-Exec=/usr/share/bin/envol.sh
-Terminal=false
-Type=Application
-Icon=Envol-5.png
-Categories=Application;Education;
-
