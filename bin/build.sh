@@ -3,7 +3,7 @@
 chroot="kiosk"
 
 for mntpoint in dev/pts dev proc sys; do
-sudo umount -f $basedir/$chroot/$mntpoint 2>/dev/null \
+sudo umount -f /opt/ltsp/$chroot/$mntpoint 2>/dev/null \
     || true
 done
 
