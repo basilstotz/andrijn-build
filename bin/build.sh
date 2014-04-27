@@ -25,11 +25,9 @@ ltsp-build-client \
     --terminal-server \
     --fat-client \
     --fat-client-desktop "ubuntu-desktop" \
-    --multimedia \
-    --calibri-font \
-    --ldm-themes-extra \
-    --custom-launcher \
     --language-support-german \
+    --multimedia \
+    --custom-launcher \
     --package-lists "debug.list edu.list standard.list"  | tee build.log
 
 
@@ -37,4 +35,5 @@ ltsp-build-client \
 #    --updates-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
 #    --security-mirror "http://localhost:3142/ch.archive.ubuntu.com/ubuntu/" \
 #    --propietary-apps \
-
+#    --ldm-themes-extra \
+#    --calibri-font \
