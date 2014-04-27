@@ -10,7 +10,6 @@ case "$MODE" in
     finalization)
        if test -n $CUSTOM_LAUNCHER; then
          echo "installing custom launcher"
-         chroot $ROOT apt-get install --yes wine gnash chromium-browser tuxmath 
          cp /etc/ltsp/includes/usr/share/applications/*.desktop $ROOT/usr/share/applications/.
          cp /etc/ltsp/includes/usr/share/pixmaps/* $ROOT/usr/share/pixmaps/.
          if ! test -d $ROOT/usr/share/bin;then mkdir -p $ROOT/usr/share/bin/;fi
