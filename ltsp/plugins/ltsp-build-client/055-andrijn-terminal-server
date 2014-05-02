@@ -13,7 +13,7 @@ case "$MODE" in
 
          chroot $ROOT apt-get install --yes ltsp-server
 
-         if test -d /var/lib/tftpboot/ltsp/; then
+         if ! test -d /var/lib/tftpboot/ltsp/; then
             echo -n "copying tftpboot..."
             if ! test -d $ROOT/var/lib/tftpboot/ltsp; then
                mkdir -p $ROOT/var/lib/tftpboot/ltsp
