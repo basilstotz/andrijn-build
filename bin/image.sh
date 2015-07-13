@@ -1,6 +1,7 @@
 #!/bin/sh
 
-arch="kiosk"
+#arch="kiosk"
 
-ltsp-update-image --arch $arch
+ltsp-update-image --base "/home/stotz.basil/ltsp/" 
+
 

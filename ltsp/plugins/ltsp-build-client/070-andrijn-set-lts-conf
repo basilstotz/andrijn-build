@@ -1,6 +1,6 @@
 case "$MODE" in
     commandline)
-        add_option "set-lts-conf" "`eval_gettext "sets default lts.conf"`" "advanced" "false"
+        add_option "andrijn-set-lts-conf" "`eval_gettext "sets default lts.conf"`" "advanced" "false"
         ;;
     configure)
         if test -n $option_set_lts_conf_value; then
@@ -11,9 +11,9 @@ case "$MODE" in
         if test -n $SET_LTS_CONF; then
             echo -n "install lts.conf..."
             # very ugly.....
-            cp /etc/ltsp/includes/etc/lts.conf /var/lib/tftpboot/ltsp/i386/lts.conf
+#            cp /etc/ltsp/includes/etc/lts.conf /var/lib/tftpboot/ltsp/i386/lts.conf
             cp /etc/ltsp/includes/etc/lts.conf $ROOT/etc/lts.conf
-            cp /etc/ltsp/includes/etc/lts.conf $ROOT/var/lib/tftpboot/ltsp/i386/lts.conf
+#            cp /etc/ltsp/includes/etc/lts.conf $ROOT/var/lib/tftpboot/ltsp/i386/lts.conf
            
             echo "ok"
         fi

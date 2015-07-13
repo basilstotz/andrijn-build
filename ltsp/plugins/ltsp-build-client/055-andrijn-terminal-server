@@ -1,6 +1,6 @@
 case "$MODE" in
     commandline)
-        add_option "terminal-server" "`eval_gettext "install a terminal server"`" "advanced" "false"
+        add_option "andrijn-terminal-server" "`eval_gettext "install a terminal server"`" "advanced" "false"
         ;;
     configure)
         if test -n $option_terminal_server_value; then
@@ -11,7 +11,10 @@ case "$MODE" in
        if test "true" = "$TERMINAL_SERVER"; then
          echo "installing terminal server items"
 
-         chroot $ROOT apt-get install --yes ltsp-server
+         chroot $ROOT apt-get install --yes dnsmasq ltsp-server
+         chroot $ROOT ltsp-config dnsmasq
+         chroot $ROOT sed -i 's/^port=0/#port=0/g' /etc/dnsmasq.d/ltsp-server-dnsmasq.conf
+         chroot $ROOT service dnsmasq restart
 
          if ! test -d /var/lib/tftpboot/ltsp/; then
             echo -n "copying tftpboot..."

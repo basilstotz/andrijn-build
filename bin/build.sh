@@ -10,24 +10,24 @@ done
 
 
 
+
 ltsp-build-client \
+    --copy-package-cache \
+    --mirror "http://mirror.switch.ch/ftp/ubuntu/" \
+    --base "/home/stotz.basil/ltsp" \
     --purge-chroot \
-    --chroot "$chroot" \
-    --skip-upgrade \
     --arch i386 \
     --skipimage \
     --update-sshkeys \
     --install-debs-dir "/etc/ltsp/debs" \
     --debconf-seeds "/etc/ltsp/preseeds/debconf.seeds" \
     --andrijn-update "http://172.16.42.1/ltsp-images" \
-    --set-lts-conf \
     --ldap-auth \
     --terminal-server \
     --fat-client \
     --fat-client-desktop "ubuntu-desktop" \
     --language-support-german \
     --multimedia \
-    --custom-launcher \
     --package-lists "debug.list edu.list standard.list"  | tee build.log
 
 
@@ -37,3 +37,4 @@ ltsp-build-client \
 #    --propietary-apps \
 #    --ldm-themes-extra \
 #    --calibri-font \
+#    --andrijn-set-lts-conf \
