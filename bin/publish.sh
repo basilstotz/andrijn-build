@@ -1,9 +1,9 @@
 #!/bin/sh
 
-chroot="kiosk"
+chroot="i386"
 
 
-cd /opt/ltsp/images
+cd /home/stotz.basil/ltsp/images/
 
 if ! test -f $chroot.img;then 
   echo "already published"
@@ -17,8 +17,8 @@ if test -z "$VERSION";then VERSION=0;fi
 VPLUS=$(( $VERSION + 1))
 NAME=$(printf "%06i.img" $VPLUS )
 
-cp $chroot.img $NAME
-rm $chroot.img* 
+mv $chroot.img $NAME
+#rm $chroot.img* 
 zsyncmake -u $NAME $NAME
 
 rm cur-image-*
